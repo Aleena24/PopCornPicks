@@ -1,2 +1,0 @@
-# PopCornPicks
-Movie Recommendation System
