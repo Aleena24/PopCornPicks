@@ -1,9 +1,20 @@
+/* General Styling */
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
+  background: linear-gradient(to bottom, #f0f8ff, #d6eaf8);
+  min-height: 100vh;
 }
 
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Search Section */
 .search-container {
   margin: 20px;
 }
@@ -13,6 +24,8 @@
   font-size: 16px;
   width: 300px;
   margin-right: 10px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
 }
 
 .search-container button {
@@ -21,18 +34,22 @@
   background-color: #007bff;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .search-container button:hover {
   background-color: #0056b3;
 }
 
+/* Error Message */
 .error {
   color: red;
   margin: 10px 0;
 }
 
+/* Recommendations Section */
 .recommendations {
   display: flex;
   flex-wrap: wrap;
@@ -48,4 +65,73 @@
   margin: 10px;
   width: 200px;
   text-align: left;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer button {
+  background: none;
+  color: white;
+  font-size: 16px;
+  border: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.footer button:hover {
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
 }

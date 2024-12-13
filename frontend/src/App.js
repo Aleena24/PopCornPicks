@@ -6,6 +6,7 @@ function App() {
     const [movieName, setMovieName] = useState("");
     const [recommendations, setRecommendations] = useState([]);
     const [error, setError] = useState("");
+    const [footerModal, setFooterModal] = useState(null); // Handle modal for About/Contact
 
     const fetchRecommendations = async () => {
         setError("");
@@ -23,6 +24,9 @@ function App() {
             setError("An error occurred. Please try again.");
         }
     };
+
+    const openModal = (type) => setFooterModal(type);
+    const closeModal = () => setFooterModal(null);
 
     return (
         <div className="App">
@@ -47,6 +51,47 @@ function App() {
                     </div>
                 ))}
             </div>
+
+            {/* Footer */}
+            <footer className="footer">
+                <button onClick={() => openModal("about")}>About</button>
+                <button onClick={() => openModal("contact")}>Contact</button>
+            </footer>
+
+            {/* Modal for About/Contact */}
+            {footerModal && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div
+                        className="modal-content"
+                        onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+                    >
+                        <button className="close-button" onClick={closeModal}>
+                            &times;
+                        </button>
+                        {footerModal === "about" && (
+                            <>
+                                <h2>About PopCornPicks</h2>
+                                <p>
+                                    PopCornPicks is your ultimate movie recommendation app. Discover the best movies and explore
+                                    genres with ease. Built for movie enthusiasts by movie enthusiasts.
+                                </p>
+                            </>
+                        )}
+                        {footerModal === "contact" && (
+                            <>
+                                <h2>Contact Us</h2>
+                                <p>
+                                    We'd love to hear from you! Reach out to us for feedback or queries:
+                                    <br />
+                                    <strong>Email:</strong> support@popcornpicks.com
+                                    <br />
+                                    <strong>Phone:</strong> +1-800-POPCORN
+                                </p>
+                            </>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
