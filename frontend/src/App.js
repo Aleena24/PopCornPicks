@@ -12,7 +12,7 @@ function App() {
         setError("");
         try {
             const response = await axios.post("http://127.0.0.1:5000/recommend", {
-                movie_name: movieName,
+                movie_name: movieName.toLowerCase(), // Convert to lowercase
             });
             if (response.data.success) {
                 setRecommendations(response.data.data);
@@ -48,6 +48,16 @@ function App() {
                         <p>Genre: {movie.Genre}</p>
                         <p>Year: {movie["Year of Release"]}</p>
                         <p>Rating: {movie["Movie Rating"]}</p>
+                        {/* Add link to IMDb or other website */}
+                        <a
+                            href={`https://www.imdb.com/find?q=${encodeURIComponent(
+                                movie["Movie Name"]
+                            )}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <button className="link-button">More Info</button>
+                        </a>
                     </div>
                 ))}
             </div>
